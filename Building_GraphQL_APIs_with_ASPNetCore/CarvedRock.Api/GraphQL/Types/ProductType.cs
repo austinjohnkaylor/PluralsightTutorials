@@ -7,7 +7,7 @@ namespace CarvedRock.Api.GraphQL.Types
     {
         public ProductType()
         {
-            Field(t => t.Id);
+            Field(t => t.Id); // GraphQL schema cannot expose the int type directly. Instead, GraphQL.Net has built-in types to infer what type this field should be (int in this case) 
             Field(t => t.Name).Description("The name of the product");
             Field(t => t.Description);
             Field(t => t.IntroducedAt).Description("When the product was first introduced in the catalog");
