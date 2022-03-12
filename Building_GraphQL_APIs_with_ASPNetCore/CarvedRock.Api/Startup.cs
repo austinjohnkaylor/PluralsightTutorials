@@ -15,9 +15,9 @@ namespace CarvedRock.Api
     public class Startup
     {
         private readonly IConfiguration _config;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
-        public Startup(IConfiguration config, IHostingEnvironment env)
+        public Startup(IConfiguration config, IWebHostEnvironment env)
         {
             _config = config;
             _env = env;
