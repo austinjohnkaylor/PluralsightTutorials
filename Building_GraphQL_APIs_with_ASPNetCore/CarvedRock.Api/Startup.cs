@@ -34,7 +34,7 @@ namespace CarvedRock.Api
             services.AddScoped<CarvedRockSchema>();
 
             services.AddGraphQL(o => { o.ExposeExceptions = false; })
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Scoped); // Register all the types that GraphQL uses
         }
 
         public void Configure(IApplicationBuilder app, CarvedRockDbContext dbContext)
