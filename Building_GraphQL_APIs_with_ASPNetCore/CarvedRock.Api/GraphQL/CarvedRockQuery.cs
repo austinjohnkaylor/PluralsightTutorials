@@ -10,7 +10,7 @@ namespace CarvedRock.Api.GraphQL
         {
             Field<ListGraphType<ProductType>>(
                 "products", 
-                resolve: context => productRepository.GetAll()
+                resolve: context => productRepository.GetAll() // returns a task that doesn't need awaited. GraphQL takes care of this for you
             );
         }
     }
