@@ -33,14 +33,14 @@ namespace CarvedRock.Api
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<CarvedRockSchema>();
 
-            services.AddGraphQL(o => { o.ExposeExceptions = false; })
+            services.AddGraphQL(o => { o.ExposeExceptions = true; /* Expose detailed exceptions in JSON responses to the client*/ })
                 .AddGraphTypes(ServiceLifetime.Scoped); // Register all the types that GraphQL uses
         }
 
         public void Configure(IApplicationBuilder app, CarvedRockDbContext dbContext)
         {
             app.UseGraphQL<CarvedRockSchema>();
-            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
+            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions()); // providing default GraphQLPlaygroundOptions sets up the GraphQL playground at /ui/playground
             dbContext.Seed();
         }
     }
